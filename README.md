@@ -1,24 +1,22 @@
-# README
+# Dog Sitter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## About
 
-Things you may want to cover:
+Some dog lovers don't have the time or money to have a full-time dog. Others want to keep their dog for an afternoon, a day, or a week without paying a huge amount of money or asking busy friends. DogSitter takes care of connecting each others. You can view the profile of a dog and its owner or search by type of dog (age, weight, distance to you). When you find the ideal dog you can contact its owner.
 
-* Ruby version
+Translated with www.DeepL.com/Translator (free version)
 
-* System dependencies
+### Technique Stack
 
-* Configuration
+* Ruby on Rails/ PostgreSQL
 
-* Database creation
+* GraphQL API
 
-* Database initialization
+* AWS S3 (photo storage)
 
-* How to run the test suite
+* CircleCI/CD
 
-* Services (job queues, cache servers, search engines, etc.)
+* Testing (Rspec, Capybara, VCR, Webmock)
 
-* Deployment instructions
+* AWS S3 (photo storage)
 
-* ...
