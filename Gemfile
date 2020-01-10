@@ -11,6 +11,7 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'vcr', '~> 3.0', '>= 3.0.1'
 gem 'webmock', '~> 3.7', '>= 3.7.6'
+gem 'dotenv', '~> 2.7', '>= 2.7.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
