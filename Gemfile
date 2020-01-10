@@ -19,7 +19,7 @@ group :development, :test do
   gem 'faker', '~> 2.9'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rspec-rails', '~> 3.9'
-  gem 'rubocop', require: false
+  gem 'rubocop', '~> 0.79.0', require: false
   gem 'rubocop-rspec', require: false
 end
 

@@ -19,9 +19,7 @@ Rails:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
-    - 'Guardfile'
     - 'vendor/bundle'
-    - 'lib/tasks/import_olympic_data.rake'
     - 'config/routes.rb'
 
 # Unpractical and not DRY
