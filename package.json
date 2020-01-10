@@ -1,0 +1,32 @@
+{
+  "name": "DogSitter_be",
+  "version": "1.0.0",
+  "description": "## About",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheMindset/DogSitter_be.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheMindset/DogSitter_be/issues"
+  },
+  "homepage": "https://github.com/TheMindset/DogSitter_be#readme",
+  "devDependencies": {
+    "husky": "^4.0.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "rubocop",
+      "pre-push": "rspec"
+    }
+  }
+}
