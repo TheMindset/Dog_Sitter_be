@@ -4,33 +4,32 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.2-node-browsers
         environment:
-          BUNDLER_VERSION: 2.0.1
+          BUNDLER_VERSION: 2.0.2
           PGHOST: localhost
-          PGUSER: whether_sweater
+          PGUSER: DogSitter_be
           RAILS_ENV: test
           TZ: America/Denver
       - image: postgres:11.3
         environment:
-          POSTGRES_USER: whether_sweater
-          POSTGRES_DB: whether_sweater_test
+          POSTGRES_USER: DogSitter_be
+          POSTGRES_DB: DogSitter_be_test
           POSTGRES_PASSWORD: ''
 
-    working_directory: ~/whether_sweater
-
+    working_directory: ~/DogSitter_be
     steps:
       - checkout
 
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
+          - v1-dependencies-r-{{ checksum "Gemfile.lock" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
       # Which version of bundler?
       - run:
           name: update bundler version
-          command: gem install bundler:2.0.1
+          command: gem install bundler:2.0.2
 
       - run:
           name: Which bundler?
@@ -48,7 +47,7 @@ jobs:
           paths:
             - ./vendor/bundle
             - ~/.cache
-          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}-y-{{ checksum "yarn.lock" }}
+          key: v1-dependencies-r-{{ checksum "Gemfile.lock" }}
 
 
       # Wait for the database
