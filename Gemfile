@@ -9,8 +9,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
-# gem 'vcr', '~> 3.0', '>= 3.0.1'
-# gem 'webmock', '~> 3.7', '>= 3.7.6'
+gem 'vcr', '~> 3.0', '>= 3.0.1'
+gem 'webmock', '~> 3.7', '>= 3.7.6'
 
 
 group :development, :test do
