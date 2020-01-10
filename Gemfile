@@ -1,15 +1,19 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 File.read('./.ruby-version')
 
-gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+gem 'bootsnap', '>= 1.1.0', require: false
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
