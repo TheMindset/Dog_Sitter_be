@@ -10,7 +10,7 @@
 #  breed          :string
 #  long_desc      :text
 #  name           :string
-#  short_des      :text
+#  short_desc     :text
 #  weight         :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -22,4 +22,7 @@
 #
 
 class Dog < ApplicationRecord
+  validates :name, :breed, :birthdate, :weight, :activity_level, presence: true
+
+  belongs_to :user
 end

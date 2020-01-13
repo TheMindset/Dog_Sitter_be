@@ -10,7 +10,7 @@
 #  breed          :string
 #  long_desc      :text
 #  name           :string
-#  short_des      :text
+#  short_desc     :text
 #  weight         :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -23,5 +23,13 @@
 
 FactoryBot.define do
   factory :dog do
+    name { Faker::Artist.unique.name }
+    birthdate { rand(5) }
+    activity_level { rand(3) }
+    breed { Faker::Creature::Dog.breed }
+    long_desc { Faker::Internet.unique.email }
+    short_desc { Faker::ChuckNorris.fact }
+    weight { rand(30) }
+    user { FactoryBot.create(:user) }
   end
 end
