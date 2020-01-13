@@ -7,7 +7,7 @@ class CreateDogs < ActiveRecord::Migration[5.2]
       t.string :breed
       t.date :birthdate
       t.integer :weight
-      t.text :short_des
+      t.text :short_desc
       t.text :long_desc
       t.integer :activity_level
       t.belongs_to :user

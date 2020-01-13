@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_01_13_222036) do
     t.string "breed"
     t.date "birthdate"
     t.integer "weight"
-    t.text "short_des"
+    t.text "short_desc"
     t.text "long_desc"
     t.integer "activity_level"
     t.bigint "user_id"
