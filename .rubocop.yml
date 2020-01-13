@@ -58,3 +58,6 @@ RSpec/LetSetup:
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: nested
+
+Naming/MethodParameterName:
+  Enabled: false
