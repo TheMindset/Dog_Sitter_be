@@ -7,22 +7,22 @@ File.read('./.ruby-version')
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dotenv', '~> 2.7', '>= 2.7.5'
+gem 'graphql'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'vcr', '~> 3.0', '>= 3.0.1'
 gem 'webmock', '~> 3.7', '>= 3.7.6'
-gem 'graphql'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
   gem 'faker', '~> 2.9'
+  gem 'graphiql-rails'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.79.0', require: false
   gem 'rubocop-rspec', require: false
-  gem 'graphiql-rails'
 end
 
 group :development do
