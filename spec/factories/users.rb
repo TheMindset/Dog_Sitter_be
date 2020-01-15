@@ -19,7 +19,7 @@ FactoryBot.define do
     first_name { Faker::Name.unique.first_name }
     last_name { Faker::Name.unique.last_name }
     email { Faker::Internet.unique.email }
-    long_desc { Faker::Internet.unique.email }
+    long_desc { Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) }
     short_desc { Faker::ChuckNorris.fact }
   end
 end

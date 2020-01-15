@@ -24,10 +24,10 @@
 FactoryBot.define do
   factory :dog do
     name { Faker::Artist.unique.name }
-    birthdate { rand(5) }
+    birthdate { Faker::Date.between(from: 2.days.ago, to: Date.today) }
     activity_level { rand(3) }
     breed { Faker::Creature::Dog.breed }
-    long_desc { Faker::Internet.unique.email }
+    long_desc { Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) }
     short_desc { Faker::ChuckNorris.fact }
     weight { rand(30) }
     user { FactoryBot.create(:user) }
