@@ -16,5 +16,20 @@ module Types
     def user(id:)
       User.find(id)
     end
+
+    field :dogs, [Types::DogType], null: false, description: 'Returns a list of dogs'
+
+    def dogs
+      Dog.all
+    end
+
+    field :dog, Types::DogType, null: false,
+                                description: 'Find dog by ID' do
+      argument :id, ID, required: true
+    end
+
+    def dog(id:)
+      Dog.find(id)
+    end
   end
 end
