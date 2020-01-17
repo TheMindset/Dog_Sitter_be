@@ -12,47 +12,24 @@ RSpec.describe 'User query', type: :request do
     json = JSON.parse(response.body)
     data = json['data']['user']
 
-    expect(data).to include(
-      'id' => user.id.to_s,
-      'firstName' => user.first_name,
-      'lastName' => user.last_name,
-      'shortDesc' => user.short_desc,
-      'longDesc' => user.long_desc
-    )
+    first_gql_user = data
+    first_db_user = user
 
-    first_dog = data['dogs'].first
+    compare_gql_and_db_ursers(first_gql_user, first_db_user)
 
-    expect(data['dogs'].count).to eq(2)
-    expect(first_dog).to include(
-      'id' => dogs.first.id.to_s,
-      'name' => dogs.first.name,
-      'breed' => dogs.first.breed,
-      'weight' => dogs.first.weight,
-      'birthdate' => dogs.first.birthdate.to_s,
-      'activityLevel' => dogs.first.activity_level,
-      'longDesc' => dogs.first.long_desc,
-      'shortDesc' => dogs.first.short_desc
-    )
+    first_gql_dog = data['dogs'].first
+    first_db_dog = dogs
+
+    compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
   end
 
   def query(id:)
     <<~GQL
       query {
         user(id: #{id}) {
-          id
-          firstName
-          lastName
-          shortDesc
-          longDesc
+          #{user_type_attributes}
           dogs {
-            id
-            name
-            breed
-            weight
-            birthdate
-            activityLevel
-            longDesc
-            shortDesc
+            #{dog_type_attributes}
           }
         }
       }
