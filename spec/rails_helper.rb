@@ -58,3 +58,51 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data('<>') { ENV[''] }
 end
+
+# Helper method for testing Graphiql response
+
+def user_type_attributes
+  "
+  id
+  firstName
+  lastName
+  shortDesc
+  longDesc
+  "
+end
+
+def dog_type_attributes
+  "
+  id
+  name
+  breed
+  weight
+  birthdate
+  activityLevel
+  longDesc
+  shortDesc
+  "
+end
+
+def compare_gql_and_db_ursers(first_gql_user, first_db_user)
+  expect(first_gql_user).to include(
+    'id' => first_db_user.id.to_s,
+    'firstName' => first_db_user.first_name,
+    'lastName' => first_db_user.last_name,
+    'shortDesc' => first_db_user.short_desc,
+    'longDesc' => first_db_user.long_desc
+  )
+end
+
+def compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
+  expect(first_gql_dog).to include(
+    'id' => first_db_dog.first.id.to_s,
+    'name' => first_db_dog.first.name,
+    'breed' => first_db_dog.first.breed,
+    'weight' => first_db_dog.first.weight,
+    'birthdate' => first_db_dog.first.birthdate.to_s,
+    'activityLevel' => first_db_dog.first.activity_level,
+    'longDesc' => first_db_dog.first.long_desc,
+    'shortDesc' => first_db_dog.first.short_desc
+  )
+end
