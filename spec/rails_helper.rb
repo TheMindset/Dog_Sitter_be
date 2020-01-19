@@ -66,6 +66,7 @@ def user_type_attributes
   id
   firstName
   lastName
+  email
   shortDesc
   longDesc
   "
