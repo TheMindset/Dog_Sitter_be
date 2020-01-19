@@ -48,4 +48,55 @@ RSpec.describe 'createUser', type: :request do
 
     expect(User.count).to eq(1)
   end
+
+  # TODO: return error not expected
+  # it 'return error if the email is already taken' do
+  #   first_name = "Boby"
+  #   last_name = "P"
+  #   email = "boby@yahoo.com"
+  #   short_desc = "I am the best"
+  #   long_desc = "
+  #     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  #     Donec porttitor pulvinar ex, vehicula fermentum elit lacinia vitae.
+  #     Duis iaculis sapien vel scelerisque congue.
+  #   "
+
+  #   create(:user, email: email)
+
+  #   query = "
+  #   mutation {
+  #     createUser(input: {
+  #       firstName: \"#{first_name}\"
+  #       lastName: \"#{last_name}\"
+  #       email: \"#{email}\"
+  #       shortDesc: \"#{short_desc}\"
+  #       longDesc: \"#{long_desc}\"
+  #     }) {
+  #       user {
+  #         #{user_type_attributes}
+  #       }
+  #     }
+  #   }
+  #   "
+  #   expect { post '/graphql', params: { query: query } }.to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Email has already been taken")
+  # end
+
+  it 'return error if no arguments are provided' do
+    query = "
+    mutation {
+      createUser() {
+        user {
+          #{user_type_attributes}
+        }
+      }
+    }
+    "
+
+    post '/graphql', params: { query: query }
+    json = JSON.parse(response.body, symbolize_names: true)
+
+    errors_message = json[:errors].first[:message]
+
+    expect(errors_message).to eq("Field 'createUser' is missing required arguments: input")
+  end
 end
