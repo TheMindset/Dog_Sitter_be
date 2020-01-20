@@ -28,7 +28,7 @@ p 'Users are created'
 20.times do
   Dog.create!(
     name: Faker::Artist.unique.name,
-    birthdate: Faker::Date.between(from: 2.days.ago, to: Date.today),
+    birthdate: rand(12 * 10).months.ago.to_date,
     activity_level: rand(3),
     breed: Faker::Creature::Dog.breed,
     long_desc: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
