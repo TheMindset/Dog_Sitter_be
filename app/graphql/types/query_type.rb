@@ -2,7 +2,8 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :users, [Types::UserType], null: false, description: 'Returns a list of users'
+    field :users, [Types::UserType], null: false,
+                                     description: 'Returns a list of users'
 
     def users
       User.all
@@ -17,7 +18,8 @@ module Types
       User.find(id)
     end
 
-    field :dogs, [Types::DogType], null: false, description: 'Returns a list of dogs'
+    field :dogs, [Types::DogType], null: false,
+                                   description: 'Returns a list of dogs'
 
     def dogs
       Dog.all
