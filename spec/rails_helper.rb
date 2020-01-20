@@ -85,7 +85,7 @@ def dog_type_attributes
   "
 end
 
-def compare_gql_and_db_ursers(first_gql_user, first_db_user)
+def compare_gql_and_db_users(first_gql_user, first_db_user)
   expect(first_gql_user).to include(
     'id' => first_db_user.id.to_s,
     'firstName' => first_db_user.first_name,
@@ -97,13 +97,13 @@ end
 
 def compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
   expect(first_gql_dog).to include(
-    'id' => first_db_dog.first.id.to_s,
-    'name' => first_db_dog.first.name,
-    'breed' => first_db_dog.first.breed,
-    'weight' => first_db_dog.first.weight,
-    'birthdate' => first_db_dog.first.birthdate.to_s,
-    'activityLevel' => first_db_dog.first.activity_level,
-    'longDesc' => first_db_dog.first.long_desc,
-    'shortDesc' => first_db_dog.first.short_desc
+    'id' => first_db_dog.id.to_s,
+    'name' => first_db_dog.name,
+    'breed' => first_db_dog.breed,
+    'weight' => first_db_dog.weight,
+    'birthdate' => first_db_dog.birthdate.to_s,
+    'activityLevel' => first_db_dog.activity_level,
+    'longDesc' => first_db_dog.long_desc,
+    'shortDesc' => first_db_dog.short_desc
   )
 end

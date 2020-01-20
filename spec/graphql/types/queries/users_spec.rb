@@ -17,10 +17,10 @@ RSpec.describe 'Users query', type: :request do
     first_db_user = users.first
     first_gql_user = data.first
 
-    compare_gql_and_db_ursers(first_gql_user, first_db_user)
+    compare_gql_and_db_users(first_gql_user, first_db_user)
 
     first_gql_dog = data.first['dogs']
-    first_db_dog = dogs
+    first_db_dog = dogs.first
 
     compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
   end
