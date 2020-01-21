@@ -8,6 +8,7 @@ module Types
     field :last_name, String, null: true
     field :short_desc, String, null: true
     field :long_desc, String, null: true
+    field :location, Types::LocationType, null: true
     field :dogs, [Types::DogType], null: true
   end
 end
