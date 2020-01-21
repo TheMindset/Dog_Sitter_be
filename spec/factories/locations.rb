@@ -26,12 +26,12 @@
 
 FactoryBot.define do
   factory :location do
-    street_address { "MyText" }
-    city { "MyString" }
-    state { "MyString" }
-    zip_code { "MyString" }
-    lat { 1.5 }
-    long { 1.5 }
-    user { nil }
+    street_address { Faker::Address.street_address }
+    city { Faker::Address.city }
+    state { Faker::Address.state }
+    zip_code { Faker::Address.zip_code }
+    lat { Faker::Address.latitude }
+    long { Faker::Address.longitude }
+    user { User.all.sample }
   end
 end

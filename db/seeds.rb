@@ -7,11 +7,13 @@ sleep(1)
 puts "Destroying previous records"
 User.destroy_all
 Dog.destroy_all
+Location.destroy_all
 
 sleep(1)
 puts "Resetting sequence"
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('dogs')
+ActiveRecord::Base.connection.reset_pk_sequence!('locations')
 
 10.times do
   User.create!(
@@ -39,3 +41,17 @@ p 'Users are created'
 end
 
 p 'Dogs are created'
+
+10.times do
+  Location.create!(
+    city: Faker::Address.city,
+    lat: Faker::Address.latitude,
+    long: Faker::Address.longitude,
+    state: Faker::Address.state,
+    street_address: Faker::Address.street_address,
+    zip_code: Faker::Address.zip_code,
+    user: User.all.sample
+  )
+end
+
+p 'Locations are created'
