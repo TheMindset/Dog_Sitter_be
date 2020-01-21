@@ -5,8 +5,9 @@ require 'pry'
 
 RSpec.describe 'Users query', type: :request do
   it 'returns a list of users' do
-    users = create_list(:user, 5)
+    users = create_list(:user, 5, )
     dogs = create_list(:dog, 3, user: users.first)
+    location = create(:location, user: users.first)
 
     post '/graphql', params: { query: query }
     json = JSON.parse(response.body)
@@ -23,6 +24,11 @@ RSpec.describe 'Users query', type: :request do
     first_db_dog = dogs.first
 
     compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
+
+    first_gql_location = data.first['location']
+    first_db_location = location
+
+    compare_gql_and_db_location(first_gql_location, first_db_location)
   end
 
   def query
@@ -32,6 +38,9 @@ RSpec.describe 'Users query', type: :request do
           #{user_type_attributes}
           dogs {
             #{dog_type_attributes}
+          }
+          location {
+            #{location_type_attributes}
           }
         }
       }

@@ -85,6 +85,16 @@ def dog_type_attributes
   "
 end
 
+def location_type_attributes
+  "
+  id
+  state
+  city
+  zipCode
+  streetAddress
+  "
+end
+
 def compare_gql_and_db_users(first_gql_user, first_db_user)
   expect(first_gql_user).to include(
     'id' => first_db_user.id.to_s,
@@ -105,5 +115,15 @@ def compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
     'activityLevel' => first_db_dog.activity_level,
     'longDesc' => first_db_dog.long_desc,
     'shortDesc' => first_db_dog.short_desc
+  )
+end
+
+def compare_gql_and_db_location(first_gql_location, first_db_location)
+  expect(first_gql_location).to include(
+    'id' => first_db_location.id.to_s,
+    'state' => first_db_location.state,
+    'city' => first_db_location.city,
+    'zipCode' => first_db_location.zip_code,
+    'streetAddress' => first_db_location.street_address,
   )
 end
