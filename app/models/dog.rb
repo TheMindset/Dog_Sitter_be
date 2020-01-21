@@ -27,4 +27,8 @@ class Dog < ApplicationRecord
 
   belongs_to :user
   has_one :location, through: :user
+
+  def age
+    (Time.zone.now - birthdate.to_time) / 1.year.seconds
+  end
 end
