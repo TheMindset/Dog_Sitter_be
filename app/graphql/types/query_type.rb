@@ -72,5 +72,14 @@ module Types
     rescue ActiveRecord::RecordNotFound => e
       raise GraphQL::ExecutionError, e.message
     end
+
+    field :locations,
+          [Types::LocationType],
+          null: false,
+          description: "Return a list of locations"
+
+    def locations
+      Location.all
+    end
   end
 end
