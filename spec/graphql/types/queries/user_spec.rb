@@ -23,6 +23,17 @@ RSpec.describe 'User query', type: :request do
     compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
   end
 
+  it 'return an error if no user with id is found' do
+    user = create(:user)
+
+    post '/graphql', params: { query: query(id: user.id + 1) }
+
+    json = JSON.parse(response.body)
+    error_message = json['errors'].first['message']
+
+    expect(error_message).to eq("Couldn't find User with 'id'=#{user.id + 1}")
+  end
+
   def query(id:)
     <<~GQL
       query {
