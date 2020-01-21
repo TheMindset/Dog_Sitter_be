@@ -2,24 +2,32 @@
 
 module Types
   class QueryType < Types::BaseObject
-    field :users, [Types::UserType], null: false,
-                                     description: 'Returns a list of users'
+    field :users,
+          [Types::UserType],
+          null: false,
+          description: 'Returns a list of users'
 
     def users
       User.all
     end
 
-    field :user, Types::UserType, null: false,
-                                  description: 'Find user by ID' do
+    field :user,
+          Types::UserType,
+          null: false,
+          description: 'Find user by ID' do
       argument :id, ID, required: true
     end
 
     def user(id:)
       User.find(id)
+    rescue ActiveRecord::RecordNotFound => e
+      raise GraphQL::ExecutionError, e.message
     end
 
-    field :dogs, [Types::DogType], null: false,
-                                   description: 'Returns a list of dogs, or filtered dogs by attributes' do
+    field :dogs,
+          [Types::DogType],
+          null: false,
+          description: 'Returns a list of dogs, or filtered dogs by attributes' do
       argument :age_range, [Int], required: false
       argument :activity_level_range, [Int], required: false
       argument :breed, [String], required: false
@@ -52,13 +60,17 @@ module Types
       Dog.order(:id).where(attributes)
     end
 
-    field :dog, Types::DogType, null: false,
-                                description: 'Find dog by ID' do
+    field :dog,
+          Types::DogType,
+          null: false,
+          description: 'Find dog by ID' do
       argument :id, ID, required: true
     end
 
     def dog(id:)
       Dog.find(id)
+    rescue ActiveRecord::RecordNotFound => e
+      raise GraphQL::ExecutionError, e.message
     end
   end
 end
