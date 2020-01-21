@@ -32,6 +32,6 @@ FactoryBot.define do
     zip_code { Faker::Address.zip_code }
     lat { Faker::Address.latitude }
     long { Faker::Address.longitude }
-    user { User.all.sample }
+    user { FactoryBot.create(:user) }
   end
 end

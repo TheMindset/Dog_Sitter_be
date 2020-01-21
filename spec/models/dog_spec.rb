@@ -40,5 +40,6 @@ RSpec.describe Dog, type: :model do
     let(:dog) { build(:dog) }
 
     it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_one(:location).through(:user) }
   end
 end

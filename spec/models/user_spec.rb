@@ -32,5 +32,6 @@ RSpec.describe User, type: :model do
     let(:user) { build(:user) }
 
     it { is_expected.to have_many(:dogs).dependent(:destroy) }
+    it { is_expected.to have_one(:location).dependent(:destroy) }
   end
 end
