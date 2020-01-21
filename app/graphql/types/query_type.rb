@@ -23,35 +23,33 @@ module Types
       argument :age_range, [Int], required: false
       argument :activity_level_range, [Int], required: false
       argument :breed, [String], required: false
+      argument :weight_range, [Int], required: false
     end
 
     def dogs(**attributes)
-      if attributes[:age_range]
-        raise GraphQL::ExecutionError, 'Must provide an array with two integers' unless attributes[:age_range].count == 2
-
-        one_year = 1.year.seconds
-        beginnig_date = Time.zone.now - (attributes[:age_range].max * one_year) - one_year
-        end_date = Time.zone.now - (attributes[:age_range].min * one_year)
-
-        attributes[:birthdate] = beginnig_date..end_date
-        attributes.delete(:age_range)
-      end
-
-      if attributes[:activity_level_range]
-        raise GraphQL::ExecutionError, "Must provide an array with two integers" unless attributes[:activity_level_range].count == 2
-
-        attributes[:activity_level_range] = attributes[:activity_level_range].min..attributes[:activity_level_range].max
-        attributes.delete(:activity_level_range)
-      end
+      raise GraphQL::ExecutionError, 'Must provide an array with two integers' if attributes[:age_range] && attributes[:age_range].count != 2
+      raise GraphQL::ExecutionError, "Must provide an array with two integers" if attributes[:activity_level_range] && attributes[:activity_level_range].count != 2
+      raise GraphQL::ExecutionError, "Must provide an array with two integers" if attributes[:weight_range] && attributes[:weight_range].count != 2
 
       if attributes[:weight_range]
-        raise GraphQL::ExecutionError, "Must provide an array with two integers" unless attributes[:weight_range].count == 2
-
-        attributes[:weight_range] = attributes[:weight_range].min..attributes[:weight_range].max
+        attributes[:weight] = [attributes[:weight_range].min..attributes[:weight_range].max]
         attributes.delete(:weight_range)
       end
 
-      Dog.where(attributes)
+      if attributes[:activity_level_range]
+        attributes[:activity_level] = [attributes[:activity_level_range].min..attributes[:activity_level_range].max]
+        attributes.delete(:activity_level_range)
+      end
+
+      if attributes[:age_range]
+        one_year = 1.year.seconds
+        beginnig_date = Time.zone.now - (attributes[:age_range].max * one_year) - one_year
+        end_date = Time.zone.now - (attributes[:age_range].min * one_year)
+        attributes[:birthdate] = [beginnig_date..end_date]
+        attributes.delete(:age_range)
+      end
+
+      Dog.order(:id).where(attributes)
     end
 
     field :dog, Types::DogType, null: false,
