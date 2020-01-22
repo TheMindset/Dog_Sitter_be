@@ -6,7 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 File.read('./.ruby-version')
 
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'dotenv', '~> 2.7', '>= 2.7.5'
+gem 'faraday'
+gem "figaro"
 gem 'graphql'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
