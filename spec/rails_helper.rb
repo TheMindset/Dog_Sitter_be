@@ -56,7 +56,7 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/vcr_cassettes"
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  config.filter_sensitive_data('<>') { ENV[''] }
+  config.filter_sensitive_data('<GOOGLE_MAPS_API_KEY>') { ENV['GOOGLE_MAPS_API_KEY'] }
 end
 
 # Helper method for testing Graphiql response
