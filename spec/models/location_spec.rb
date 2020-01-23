@@ -64,7 +64,7 @@ RSpec.describe Location, type: :model do
     it 'update lat/lng on model update' do
       VCR.use_cassette('before_save_on_model_update') do
         @location.update(
-          street_address: "680 Cours de la Libération, 33405 Talence France",
+          street_address: "680 Cours de la Libération",
           zip_code: 33_405,
           city: 'Talence',
           state: 'France'
