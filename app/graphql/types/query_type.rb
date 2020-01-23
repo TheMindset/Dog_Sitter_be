@@ -24,10 +24,11 @@ module Types
       raise GraphQL::ExecutionError, e.message
     end
 
-    field :current_user, 
-      Types::CurrentUserType, 
-      null: true
-      description: 'Get information about the current_user'
+    field :current_user,
+          Types::CurrentUserType,
+          null: true,
+          description: 'Get information about the current_user' do
+          end
 
     def current_user
       context[:current_user]
