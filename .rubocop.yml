@@ -55,9 +55,15 @@ RSpec/EmptyExampleGroup:
 RSpec/LetSetup:
   Enabled: false
 
-
 Style/ClassAndModuleChildren:
   EnforcedStyle: nested
 
 Naming/MethodParameterName:
   Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+Lint/UselessAssignment: 
+  Exclude: 
+    - 'app/models/location.rb'
