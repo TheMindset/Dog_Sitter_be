@@ -40,4 +40,39 @@ RSpec.describe Location, type: :model do
 
     it { is_expected.to belong_to(:user) }
   end
+
+  describe 'before_save_location' do
+    before do
+      user = create(:user)
+
+      VCR.use_cassette('before_save_on_model_creation') do
+        @location = described_class.create!(
+          user: user,
+          street_address: '52 Rue de la Verrerie',
+          zip_code: 75_003,
+          city: 'Paris',
+          state: 'France'
+        )
+      end
+    end
+
+    it 'update lat/lng on model creation' do
+      expect(@location.lat).to eq(48.85819170000001)
+      expect(@location.long).to eq(2.3525905)
+    end
+
+    it 'update lat/lng on model update' do
+      VCR.use_cassette('before_save_on_model_update') do
+        @location.update(
+          street_address: "680 Cours de la Libération, 33405 Talence France",
+          zip_code: 33_405,
+          city: 'Talence',
+          state: 'France'
+        )
+      end
+
+      expect(@location.lat).to eq(44.7963814)
+      expect(@location.long).to eq(-0.6019479)
+    end
+  end
 end
