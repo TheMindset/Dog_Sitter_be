@@ -34,4 +34,18 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:dogs).dependent(:destroy) }
     it { is_expected.to have_one(:location).dependent(:destroy) }
   end
+
+  describe 'instance method' do
+    it '#haversine_distance_to to a user in miles' do
+      user = create(:user)
+      location = instance_double("Location", lat: 48.85819170000001, long: 2.3525905)
+      allow(user).to receive(:location) { location }
+
+      second_user = create(:user)
+      second_location = instance_double("Location", lat: 44.7963814, long: -0.6019479)
+      allow(second_user).to receive(:location) { second_location }
+
+      expect(user.haversine_distance_to(second_user)).to be_within(502).of(506)
+    end
+  end
 end
