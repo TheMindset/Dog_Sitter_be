@@ -16,7 +16,7 @@ RSpec.describe 'Dog query', type: :request do
 
   it 'return a list of dogs' do
     query = " query {
-      dogs() {
+      dogs {
         #{dog_type_attributes}
         user {
           #{user_type_attributes}
