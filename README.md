@@ -1,6 +1,6 @@
 # Dog Sitter
 
-#### Steel in develpment.
+#### The front-end part is still under development. 
 
 ## About
 
