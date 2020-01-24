@@ -6,6 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 File.read('./.ruby-version')
 
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'faker', '~> 2.9'
 gem 'faraday'
 gem "figaro"
 gem 'graphql'
@@ -18,7 +19,6 @@ gem 'webmock', '~> 3.7', '>= 3.7.6'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
-  gem 'faker', '~> 2.9'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.79.0', require: false
