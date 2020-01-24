@@ -1,12 +1,14 @@
 # Dog Sitter
 
+#### Steel in develpment.
+
 ## About
 
 Some dog lovers don't have the time or money to have a full-time dog. Others want to keep their dog for an afternoon, a day, or a week without paying a huge amount of money or asking busy friends. DogSitter takes care of connecting each others. You can view the profile of a dog and its owner or search by type of dog (age, weight, distance to you). When you find the ideal dog you can contact its owner.
 
 ### Technique Stack
 
-* Ruby on Rails/ PostgreSQL
+* Ruby on Rails / PostgreSQL
 
 * GraphQL API
 
@@ -16,7 +18,7 @@ Some dog lovers don't have the time or money to have a full-time dog. Others wan
 
 * Testing (Rspec, Capybara, VCR, Webmock)
 
-* AWS S3 (photo storage)
+* React / Router / Redux / Apollo GraphQL
 
 ## Endpoints
 
@@ -87,7 +89,7 @@ Available attributes for _dogs_ are:
 * longDesc - String
 * shortDesc - String
 * user - UserType
-* location LocationType
+* location - LocationType
 
 
 #### Example of expected output:
@@ -117,6 +119,63 @@ Available attributes for _dogs_ are:
     }
 }
 
+```
+</details>
+
+---
+
+### /graphql?query={locations{id,streetAddress,city}}
+
+Returns a list of all locations. Additional attributes should be included as comma separated values without any spacing.
+Available attributes for _locations_ are:
+
+* id - ID
+* streetAddress - String
+* city - String
+* zipcode - String
+* state - String
+* lat - Float
+* long - Float
+
+id
+streetAddress
+city
+zipCode
+state
+lat
+long
+
+#### Example of expected output:
+
+<details>
+
+```json
+{
+  "data": {
+    "locations": [
+      {
+        "id": "1",
+        "streetAddress": "561 Osvaldo Rapid",
+        "city": "Lake Justina"
+      },
+      {
+        "id": "2",
+        "streetAddress": "2259 Turcotte Way",
+        "city": "South Ronnie"
+      },
+      {
+        "id": "3",
+        "streetAddress": "4493 Ngan Walks",
+        "city": "Raynorland"
+      },
+      {
+        "id": "4",
+        "streetAddress": "81482 Donald Place",
+        "city": "Karrenbury"
+      }
+    ]
+  }
+}
 ```
 </details>
 
