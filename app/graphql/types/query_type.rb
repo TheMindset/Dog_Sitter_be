@@ -27,7 +27,8 @@ module Types
     field :current_user,
           Types::CurrentUserType,
           null: true,
-          description: 'Get information about the current_user' do
+          description: 'Get information about the current_user
+          (with googleToken in params)' do
           end
 
     def current_user
