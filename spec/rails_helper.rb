@@ -95,6 +95,10 @@ def location_type_attributes
   "
 end
 
+def current_user_type_attributes
+  user_type_attributes
+end
+
 def compare_gql_and_db_users(first_gql_user, first_db_user)
   expect(first_gql_user).to include(
     'id' => first_db_user.id.to_s,
