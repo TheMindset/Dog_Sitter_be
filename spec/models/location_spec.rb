@@ -74,5 +74,18 @@ RSpec.describe Location, type: :model do
       expect(@location.lat).to eq(44.7963814)
       expect(@location.long).to eq(-0.6019479)
     end
+
+    it 'throw an error if invalid address provided' do
+      VCR.use_cassette('before_save_on_model_update/invalid_location') do
+        user = create(:user)
+
+        expect {
+          @location = described_class.create(
+            user: user,
+            zip_code: "ssss"
+          )
+        }.to raise_error(RuntimeError, 'Invalid address entered')
+      end
+    end
   end
 end

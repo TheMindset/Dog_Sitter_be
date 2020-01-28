@@ -39,6 +39,9 @@ class Location < ApplicationRecord
 
   def retreive_lat_lng
     response = geocoder_input_location.geocode
+
+    raise 'Invalid address entered' unless response[:results].first
+
     response[:results].first[:geometry][:location]
   end
 
@@ -47,6 +50,7 @@ class Location < ApplicationRecord
   end
 
   def input_location
+    input_location = ""
     input_location = "#{street_address}, " if street_address
     input_location += "#{zip_code} " if zip_code
     input_location += "#{city} " if city
