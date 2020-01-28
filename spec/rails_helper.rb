@@ -61,6 +61,7 @@ end
 
 # Helper method for testing Graphiql response
 
+# Users
 def user_type_attributes
   "
   id
@@ -72,33 +73,6 @@ def user_type_attributes
   "
 end
 
-def dog_type_attributes
-  "
-  id
-  name
-  breed
-  weight
-  birthdate
-  activityLevel
-  longDesc
-  shortDesc
-  "
-end
-
-def location_type_attributes
-  "
-  id
-  state
-  city
-  zipCode
-  streetAddress
-  "
-end
-
-def current_user_type_attributes
-  user_type_attributes
-end
-
 def compare_gql_and_db_users(first_gql_user, first_db_user)
   expect(first_gql_user).to include(
     'id' => first_db_user.id.to_s,
@@ -107,6 +81,21 @@ def compare_gql_and_db_users(first_gql_user, first_db_user)
     'shortDesc' => first_db_user.short_desc,
     'longDesc' => first_db_user.long_desc
   )
+end
+
+# Dogs
+def dog_type_attributes
+  "
+  id
+  name
+  breed
+  weight
+  birthdate
+  activityLevel
+  distance
+  longDesc
+  shortDesc
+  "
 end
 
 def compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
@@ -122,6 +111,17 @@ def compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
   )
 end
 
+# Location
+def location_type_attributes
+  "
+  id
+  state
+  city
+  zipCode
+  streetAddress
+  "
+end
+
 def compare_gql_and_db_location(first_gql_location, first_db_location)
   expect(first_gql_location).to include(
     'id' => first_db_location.id.to_s,
@@ -130,4 +130,9 @@ def compare_gql_and_db_location(first_gql_location, first_db_location)
     'zipCode' => first_db_location.zip_code,
     'streetAddress' => first_db_location.street_address,
   )
+end
+
+# current_user
+def current_user_type_attributes
+  user_type_attributes
 end
