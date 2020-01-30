@@ -66,10 +66,9 @@ def user_type_attributes
   "
   id
   firstName
-  lastName
-  email
   shortDesc
   longDesc
+  distance
   "
 end
 
@@ -77,9 +76,27 @@ def compare_gql_and_db_users(first_gql_user, first_db_user)
   expect(first_gql_user).to include(
     'id' => first_db_user.id.to_s,
     'firstName' => first_db_user.first_name,
-    'lastName' => first_db_user.last_name,
     'shortDesc' => first_db_user.short_desc,
     'longDesc' => first_db_user.long_desc
+  )
+end
+
+# current_user
+def current_user_type_attributes
+  user_type_attributes +
+    '
+    email
+    lastName
+    '
+end
+
+def compare_gql_and_db_current_users(_gql_user, db_user)
+  expect(first_gql_user).to include(
+    'id' => db_user.id.to_s,
+    'firstName' => db_user.first_name,
+    'shortDesc' => db_user.short_desc,
+    'longDesc' => db_user.long_desc,
+    'email' => db_user.email
   )
 end
 
@@ -90,9 +107,9 @@ def dog_type_attributes
   name
   breed
   weight
+  distance
   birthdate
   activityLevel
-  distance
   longDesc
   shortDesc
   "
@@ -128,11 +145,6 @@ def compare_gql_and_db_location(first_gql_location, first_db_location)
     'state' => first_db_location.state,
     'city' => first_db_location.city,
     'zipCode' => first_db_location.zip_code,
-    'streetAddress' => first_db_location.street_address,
+    'streetAddress' => first_db_location.street_address
   )
-end
-
-# current_user
-def current_user_type_attributes
-  user_type_attributes
 end
