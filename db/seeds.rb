@@ -21,7 +21,8 @@ ActiveRecord::Base.connection.reset_pk_sequence!('locations')
     last_name: Faker::Name.unique.last_name,
     email: Faker::Internet.unique.email,
     long_desc: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false),
-    short_desc: Faker::ChuckNorris.fact
+    short_desc: Faker::ChuckNorris.fact,
+    google_token: Faker::Alphanumeric.alpha(number: 20)
   )
 end
 
