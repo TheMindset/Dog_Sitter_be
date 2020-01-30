@@ -115,16 +115,21 @@ def dog_type_attributes
   "
 end
 
-def compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
-  expect(first_gql_dog).to include(
-    'id' => first_db_dog.id.to_s,
-    'name' => first_db_dog.name,
-    'breed' => first_db_dog.breed,
-    'weight' => first_db_dog.weight,
-    'birthdate' => first_db_dog.birthdate.to_s,
-    'activityLevel' => first_db_dog.activity_level,
-    'longDesc' => first_db_dog.long_desc,
-    'shortDesc' => first_db_dog.short_desc
+def compare_gql_and_db_dogs(gql_dog, db_dog, include_id = true)
+  if include_id
+    expect(gql_dog).to include(
+      'id' => db_dog.id.to_s
+    )
+  end
+
+  expect(gql_dog).to include(
+    'name' => db_dog.name,
+    'breed' => db_dog.breed,
+    'weight' => db_dog.weight,
+    'birthdate' => db_dog.birthdate.to_s,
+    'activityLevel' => db_dog.activity_level,
+    'longDesc' => db_dog.long_desc,
+    'shortDesc' => db_dog.short_desc
   )
 end
 

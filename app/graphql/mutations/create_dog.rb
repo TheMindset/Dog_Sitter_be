@@ -7,7 +7,7 @@ module Mutations
     field :dog, Types::DogType, null: true
 
     def resolve(dog:)
-      boot_unauthenticated_user
+      boot_unauthorized_user
 
       new_dog = Dog.create!(
         user: context[:current_user],
