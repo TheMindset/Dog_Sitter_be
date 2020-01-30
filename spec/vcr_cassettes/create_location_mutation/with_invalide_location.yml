@@ -1,0 +1,119 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=invalid%20street_address,%2033405%20Talence%20France&key=<GOOGLE_MAPS_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 30 Jan 2020 08:35:15 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=384
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "Talence",
+                       "short_name" : "Talence",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Gironde",
+                       "short_name" : "Gironde",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "Nouvelle-Aquitaine",
+                       "short_name" : "Nouvelle-Aquitaine",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "France",
+                       "short_name" : "FR",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "33400",
+                       "short_name" : "33400",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "33400 Talence, France",
+                 "geometry" : {
+                    "bounds" : {
+                       "northeast" : {
+                          "lat" : 44.825382,
+                          "lng" : -0.5726129
+                       },
+                       "southwest" : {
+                          "lat" : 44.786829,
+                          "lng" : -0.611104
+                       }
+                    },
+                    "location" : {
+                       "lat" : 44.802614,
+                       "lng" : -0.588054
+                    },
+                    "location_type" : "APPROXIMATE",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 44.825382,
+                          "lng" : -0.5726129
+                       },
+                       "southwest" : {
+                          "lat" : 44.786829,
+                          "lng" : -0.611104
+                       }
+                    }
+                 },
+                 "partial_match" : true,
+                 "place_id" : "ChIJC5nYpnAnVQ0RINEWSBdlBgQ",
+                 "types" : [ "locality", "political" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 30 Jan 2020 08:35:15 GMT
+recorded_with: VCR 3.0.3
