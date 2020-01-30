@@ -144,12 +144,17 @@ def location_type_attributes
   "
 end
 
-def compare_gql_and_db_location(first_gql_location, first_db_location)
-  expect(first_gql_location).to include(
-    'id' => first_db_location.id.to_s,
-    'state' => first_db_location.state,
-    'city' => first_db_location.city,
-    'zipCode' => first_db_location.zip_code,
-    'streetAddress' => first_db_location.street_address
+def compare_gql_and_db_location(gql_location, db_location, include_id = true)
+  if include_id
+    expect(gql_location).to include(
+      'id' => db_location.id.to_s
+    )
+  end
+
+  expect(gql_location).to include(
+    'state' => db_location.state,
+    'city' => db_location.city,
+    'zipCode' => db_location.zip_code,
+    'streetAddress' => db_location.street_address
   )
 end
