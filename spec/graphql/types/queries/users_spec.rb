@@ -6,10 +6,10 @@ require 'pry'
 RSpec.describe 'Users query', type: :request do
   it 'returns a list of users' do
     VCR.use_cassette('query_users_and_create_location') do
-      users = create_list(:user, 5, )
+      users = create_list(:user, 5)
       dogs = create_list(:dog, 3, user: users.first)
 
-      location = Location.create!(
+      Location.create!(
         user: users.first,
         street_address: '52 Rue de la Verrerie',
         zip_code: 75_003,
@@ -32,11 +32,6 @@ RSpec.describe 'Users query', type: :request do
       first_db_dog = dogs.first
 
       compare_gql_and_db_dogs(first_gql_dog, first_db_dog)
-
-      first_gql_location = data.first['location']
-      first_db_location = location
-
-      compare_gql_and_db_location(first_gql_location, first_db_location)
     end
   end
 
@@ -47,9 +42,6 @@ RSpec.describe 'Users query', type: :request do
           #{user_type_attributes}
           dogs {
             #{dog_type_attributes}
-          }
-          location {
-            #{location_type_attributes}
           }
         }
       }
