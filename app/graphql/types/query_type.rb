@@ -8,7 +8,7 @@ module Types
           description: 'Returns a list of users'
 
     def users
-      User.all
+      User.order(:id)
     end
 
     field :user,
@@ -68,7 +68,12 @@ module Types
         attributes.delete(:age_range)
       end
 
-      Dog.order(:id).where(attributes)
+      dogs = if current_user&.location
+               Dog.sorted_by_distance(current_user)
+             else
+               Dog.order(:id)
+             end
+      dogs.where(attributes)
     end
 
     field :dog,

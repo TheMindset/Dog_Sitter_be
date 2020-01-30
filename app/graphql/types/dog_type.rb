@@ -13,5 +13,12 @@ module Types
     field :short_desc, String, null: true
     field :location, Types::LocationType, null: true
     field :user, Types::UserType, null: true
+    field :distance, Float, null: true
+
+    def distance
+      current_user = context[:current_user]
+
+      current_user.haversine_distance_to(object) if current_user&.location
+    end
   end
 end
