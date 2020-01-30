@@ -90,8 +90,8 @@ def current_user_type_attributes
     '
 end
 
-def compare_gql_and_db_current_users(_gql_user, db_user)
-  expect(first_gql_user).to include(
+def compare_gql_and_db_current_users(gql_user, db_user)
+  expect(gql_user).to include(
     'id' => db_user.id.to_s,
     'firstName' => db_user.first_name,
     'shortDesc' => db_user.short_desc,
