@@ -24,19 +24,17 @@ Some dog lovers don't have the time or money to have a full-time dog. Others wan
 
 This service utilizes [GraphQL](https://graphql.org/). All queries are made to a single endpoint, `POST / graphql`. This endpoint return 200 (OK). If there is an error, it will be present in an `errors` atribute of the response, and the data attribute will be `null`.
 
-### /graphql?query={users{id,firstName,email}}
+### /graphql?query={users{id,firstName}}
 
 Returns a list of all users. Additional attributes should be included as comma separated values without any spacing.
 Available attributes for _users_ are:
 
 * id - ID
-* lastName - String
 * firstName - String
-* email - String
 * longDesc - String
 * shortDesc - String
+* distance -Float (in km, null if the current user or queried user does not have a location defined)
 * dogs - [DogType]
-* location [LocationType]
 
 #### Example of expected output:
 
@@ -49,22 +47,18 @@ Available attributes for _users_ are:
             {
                 "id": "1",
                 "firstName": "Sharen",
-                "email": "taylor@jacobi.biz"
             },
             {
                 "id": "2",
                 "firstName": "Troy",
-                "email": "ozell_schmidt@wunschtoy.info"
             },
             {
                 "id": "3",
                 "firstName": "Vito",
-                "email": "deneen@dibbert.biz"
             },
             {
                 "id": "4",
                 "firstName": "Jermaine",
-                "email": "kacey@kunde.name"
             }
         ]
     }
@@ -84,10 +78,10 @@ Available attributes for _dogs_ are:
 * name - String
 * age - Int
 * breed - String
-* email - String
 * activityLevel - Int
 * longDesc - String
 * shortDesc - String
+* distance -Float (in km, null if the current user or queried doq's user does not have a location defined)
 * user - UserType
 * location - LocationType
 
@@ -132,18 +126,10 @@ Available attributes for _locations_ are:
 * id - ID
 * streetAddress - String
 * city - String
-* zipcode - String
+* zipCode - String
 * state - String
 * lat - Float
 * long - Float
-
-id
-streetAddress
-city
-zipCode
-state
-lat
-long
 
 #### Example of expected output:
 
@@ -180,6 +166,58 @@ long
 </details>
 
 ---
+
+### /graphql?query={currentUser{lastName,email,distance,dogs{name},location{city}}}&google_token=GOOGLE_TOKEN
+
+Returns an authenticated user, based on the specified google_token. Returns nil if no user has the specified google_token.
+After authentification available attributes for _currentUser_ are: 
+
+* id - ID
+* firstName - String
+* lastName - String
+* email - String
+* longDesc - String
+* shortDesc - String
+* distance -Float (in km, null if the current user or queried user does not have a location defined)
+* dogs - [DogType]
+* location - [LocationType]
+
+---
+
+### /graphql?query={dogs(ageRange:[1,3],weightRange:[10,20]){name,shortDesc}}
+
+Returns a list of dogs, with the options to filter. If the the request are made by the currentUser, the dogs are sorted by distance from him.
+Available filters for _dogs_ are:
+
+* ageRange: [Int]
+* weigthRange: [Int]
+* breed: [String]
+* activityLevel: [Int]
+
+#### Example of expected output:
+
+<details>
+
+```json
+{
+  "data": {
+    "dogs": [
+      {
+        "name": "Ansel Adams",
+        "shortDesc": "When Chuck Norris points to null, null quakes in fear."
+      },
+      {
+        "name": "Degas",
+        "shortDesc": "Chuck Norris does not use revision control software. None of his code has ever needed revision."
+      }
+    ]
+  }
+}
+```
+</details>
+
+---
+
 
 ## Get Started
 
