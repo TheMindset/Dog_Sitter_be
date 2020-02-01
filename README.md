@@ -31,7 +31,7 @@ Some dog lovers don't have the time or money to have a full-time dog. Others wan
 
 ### Upcoming Feature
 
-#### Calendar Microservice (NodeJs/ Express/ (GraphQL or REST))
+#### Calendar Microservice (NodeJs / Express/ (GraphQL or REST))
   * **User Story**: The dog(s) owner can add on a calendar the date when they will be absent. In this way, the users can directly reserve the slot and wait confirmation from the owner of the dog(s).
 
 
@@ -84,6 +84,37 @@ Available attributes for _users_ are:
 
 ---
 
+### /graphql?query={user(id: <ID>){id,firstName,shortDesc}}
+
+Returns the user having the specified ID. (_id :argument is required_). Additional attributes should be included as comma separated values without any spacing.
+Available attributes for _users_ are:
+
+* id - ID
+* firstName - String
+* longDesc - String
+* shortDesc - String
+* distance -Float (in km, null if the current user or queried user does not have a location defined)
+* dogs - [DogType]
+
+#### Example of expected output:
+
+<details>
+
+```json
+{
+  "data": {
+    "user": {
+      "id": "1",
+      "firstName": "Clarence",
+      "shortDesc": "Chuck Norris knows the last digit of PI."
+    }
+  }
+}
+```
+</details>
+
+---
+
 ### /graphql?query={dogs{id,name,breed}}
 
 Returns a list of all dogs. Additional attributes should be included as comma separated values without any spacing.
@@ -128,6 +159,43 @@ Available attributes for _dogs_ are:
     }
 }
 
+```
+</details>
+
+---
+
+### /graphql?query={dog(id: <ID>){id,name,breed}}
+
+Returns the dog having the specified ID. (_id :argument is required_). Additional attributes should be included as comma separated values without any spacing.
+Available attributes for _dogs_ are:
+
+* id - ID
+* name - String
+* age - Int
+* breed - String
+* activityLevel - Int
+* longDesc - String
+* shortDesc - String
+* distance -Float (in km, null if the current user or queried doq's user does not have a location defined)
+* user - UserType
+* location - LocationType
+
+
+#### Example of expected output:
+
+<details>
+
+```json
+{
+  "data": {
+    "dog": {
+      "id": "1",
+      "name": "Picasso",
+      "age": 5,
+      "birthdate": "2014-08-28"
+    }
+  }
+}
 ```
 </details>
 
@@ -184,7 +252,7 @@ Available attributes for _locations_ are:
 
 ### /graphql?query={currentUser{lastName,email,distance,dogs{name},location{city}}}&google_token=GOOGLE_TOKEN
 
-Returns an authenticated user, based on the specified google_token. Returns nil if no user has the specified google_token.
+Returns an authenticated user, based on the specified google_token. (*the google_token params is required*). Returns nil if no user has the specified google_token.
 After authentification available attributes for _currentUser_ are: 
 
 * id - ID
