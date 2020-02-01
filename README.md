@@ -1,7 +1,5 @@
 # Dog Sitter
 
-#### The front-end part is still under development. 
-
 ## About
 
 Some dog lovers don't have the time or money to have a full-time dog. Others want to keep their dog for an afternoon, a day, or a week without paying a huge amount of money or asking busy friends. DogSitter takes care of connecting each others. You can view the profile of a dog and its owner or search by type of dog (age, weight, distance to you). When you find the ideal dog you can contact its owner.
@@ -16,9 +14,26 @@ Some dog lovers don't have the time or money to have a full-time dog. Others wan
 
 * CircleCI/CD
 
-* Testing (Rspec, Capybara, VCR, Webmock)
+* Testing (Rspec, Capybara, VCR, Webmock, Jest, Snapshot)
 
-* React / Router / Redux / Apollo GraphQL
+* React / Router / Redux / Redux-thunk / Apollo GraphQL
+
+### Feature in development
+
+#### GraphQL API
+  * createPhoto mutation. **User Sotry**: The dog(s) owner can add/delete pictures of his dog. The picture must be save on AWS S3.
+
+  * Implement [chatkit](https://pusher.com/chatkit). **User Sotry** : A user logged can start can start a discussion with the dog's owner if he is online or leave him a message. The message will also be sent by email.
+
+#### The front app (React)
+  * Implement React on the ROR GraphQL API.
+  * Build the front app with Apollo GraphQL, Redux / Redux-thunk / Router
+
+### Upcoming Feature
+
+#### Calendar Microservice (NodeJs/ Express/ (GraphQL or REST))
+  * **User Story**: The dog(s) owner can add on a calendar the date when they will be absent. In this way, the users can directly reserve the slot and wait confirmation from the owner of the dog(s).
+
 
 ## Endpoints
 
