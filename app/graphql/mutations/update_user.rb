@@ -13,7 +13,7 @@ module Mutations
       current_user = context[:current_user]
 
       current_user.update(user.to_hash) if user
-      current_user.update(location.to_hash) if location
+      current_user.location.update(location.to_hash) if location
 
       { current_user: current_user }
     end

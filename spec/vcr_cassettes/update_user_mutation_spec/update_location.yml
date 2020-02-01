@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=680%20Cours%20de%20la%20Lib%C3%A9ration,%2033405%20Talence%20France&key=<GOOGLE_MAPS_API_KEY>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sat, 01 Feb 2020 08:47:56 GMT
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Cache-Control:
+      - no-cache, must-revalidate
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      Server-Timing:
+      - gfet4t7; dur=381
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICAicmVzdWx0cyIgOiBbCiAgICAgIHsKICAgICAgICAgImFkZHJlc3NfY29tcG9uZW50cyIgOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiNjgwIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIjY4MCIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJzdHJlZXRfbnVtYmVyIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiQ291cnMgZGUgbGEgTGliw6lyYXRpb24iLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiQ291cnMgZGUgbGEgTGliw6lyYXRpb24iLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAicm91dGUiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJUYWxlbmNlIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIlRhbGVuY2UiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAibG9jYWxpdHkiLCAicG9saXRpY2FsIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdfbmFtZSIgOiAiR2lyb25kZSIsCiAgICAgICAgICAgICAgICJzaG9ydF9uYW1lIiA6ICJHaXJvbmRlIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImFkbWluaXN0cmF0aXZlX2FyZWFfbGV2ZWxfMiIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJOb3V2ZWxsZS1BcXVpdGFpbmUiLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiTm91dmVsbGUtQXF1aXRhaW5lIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsgImFkbWluaXN0cmF0aXZlX2FyZWFfbGV2ZWxfMSIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICJGcmFuY2UiLAogICAgICAgICAgICAgICAic2hvcnRfbmFtZSIgOiAiRlIiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAiY291bnRyeSIsICJwb2xpdGljYWwiIF0KICAgICAgICAgICAgfSwKICAgICAgICAgICAgewogICAgICAgICAgICAgICAibG9uZ19uYW1lIiA6ICIzMzQwMCIsCiAgICAgICAgICAgICAgICJzaG9ydF9uYW1lIiA6ICIzMzQwMCIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJwb3N0YWxfY29kZSIgXQogICAgICAgICAgICB9CiAgICAgICAgIF0sCiAgICAgICAgICJmb3JtYXR0ZWRfYWRkcmVzcyIgOiAiNjgwIENvdXJzIGRlIGxhIExpYsOpcmF0aW9uLCAzMzQwMCBUYWxlbmNlLCBGcmFuY2UiLAogICAgICAgICAiZ2VvbWV0cnkiIDogewogICAgICAgICAgICAibG9jYXRpb24iIDogewogICAgICAgICAgICAgICAibGF0IiA6IDQ0Ljc5NjM4MTQsCiAgICAgICAgICAgICAgICJsbmciIDogLTAuNjAxOTQ3OQogICAgICAgICAgICB9LAogICAgICAgICAgICAibG9jYXRpb25fdHlwZSIgOiAiUk9PRlRPUCIsCiAgICAgICAgICAgICJ2aWV3cG9ydCIgOiB7CiAgICAgICAgICAgICAgICJub3J0aGVhc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IDQ0Ljc5NzczMDM4MDI5MTUsCiAgICAgICAgICAgICAgICAgICJsbmciIDogLTAuNjAwNTk4OTE5NzA4NDk4CiAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICJzb3V0aHdlc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IDQ0Ljc5NTAzMjQxOTcwODUsCiAgICAgICAgICAgICAgICAgICJsbmciIDogLTAuNjAzMjk2ODgwMjkxNTAyMQogICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgfSwKICAgICAgICAgInBsYWNlX2lkIiA6ICJDaElKbFEzWUdaN1lWQTBSazEtZmFwZHk1TUUiLAogICAgICAgICAicGx1c19jb2RlIiA6IHsKICAgICAgICAgICAgImNvbXBvdW5kX2NvZGUiIDogIlE5V1grSDYgVGFsZW5jZSwgRnJhbmNlIiwKICAgICAgICAgICAgImdsb2JhbF9jb2RlIiA6ICI4Q1BYUTlXWCtINiIKICAgICAgICAgfSwKICAgICAgICAgInR5cGVzIiA6IFsgInN0cmVldF9hZGRyZXNzIiBdCiAgICAgIH0KICAgXSwKICAgInN0YXR1cyIgOiAiT0siCn0K
+    http_version: 
+  recorded_at: Sat, 01 Feb 2020 08:47:56 GMT
+recorded_with: VCR 3.0.3
